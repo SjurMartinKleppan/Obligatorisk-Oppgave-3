@@ -1,3 +1,5 @@
+import javax.swing.text.Utilities;
+
 import static javax.swing.JOptionPane.*;
 
 public class UnikeTall {
@@ -17,7 +19,7 @@ public class UnikeTall {
          return false;
      }
 
-     public void ArrayListe(){
+     public void arrayListe(int arrayListe){
          int hentTall = (int)(Math.random()*(900)+100);
          for (int i = 0; i < tilfeldigTall.length; i++){
              while (test (hentTall)){
@@ -26,7 +28,6 @@ public class UnikeTall {
              tilfeldigTall[i] = hentTall;
          }
          for (int i = 0; i < tilfeldigTall.length; i++){
-             System.out.print(tilfeldigTall[i]+ " ");
          }
      }
 
@@ -59,9 +60,9 @@ public class UnikeTall {
     }
 
     public void visMelding(){
-        showMessageDialog(null, tilfeldigTall.length+ "\n"
-                            +"Mistetallet er "+ finnMinsteTall(tilfeldigTall)+ "\n"
-                            +"Størstetallet er "+finnStørsteTall(tilfeldigTall));
+        showMessageDialog(null, "Det minste tallet er: "+ "\n"+
+                            "Det største taller er: " + "\n"+
+                            "Gjennomsnittet er: ");
     }
 
    /* Metode som viser tallene i arrayet i en meldngsboks.
