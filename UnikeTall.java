@@ -1,27 +1,68 @@
+import static javax.swing.JOptionPane.*;
+
 public class UnikeTall {
-    // Deklarasjon av array for lagring av tilfeldige heltall
 
-   /* Konstruktør som mottar arrayets lengde som parameter og
-     oppretter arrayet.  */
+    int [] tilfeldigTall;
 
-   /* Metode som skal undersøke om et gitt tall finnes i arrayet fra før.
-     Tallet det letes etter skal mottas som parameter.
-     Metoden skal returnere true hvis tallet finnes i arrayet.
-     Hvis ikke skal metoden returnere false. */
+    public void UnikeTall(int[] tilfeldigTall) {
+        this.tilfeldigTall = new int[tilfeldigTall.length];
+    }
 
-   /* Metode som skal fylle arrayet med tilfeldige tall mellom 100 og 999,
-     begge grenser inkludert. Metoden skal gjøre dette på en måte
-     som sikrer at alle tallene er forskjellige. Metoden skal ikke ha
-     parametre og heller ikke returnere noen verdi.
-     Tips bruk (int)(Math.random()*(900)+100); for å generere tallene mellom 100 og 999
-   */
+     private boolean test(int finnTall){
+         for (int i = 0; i < tilfeldigTall.length; i++){
+             if (tilfeldigTall[i] == finnTall){
+                 return true;
+             }
+         }
+         return false;
+     }
 
-        // Metode som finner og returnerer det minste tallet i arrayet.
+     public void ArrayListe(){
+         int hentTall = (int)(Math.random()*(900)+100);
+         for (int i = 0; i < tilfeldigTall.length; i++){
+             while (test (hentTall)){
+                 hentTall = (int)(Math.random()*(900)+100);
+             }
+             tilfeldigTall[i] = hentTall;
+         }
+         for (int i = 0; i < tilfeldigTall.length; i++){
+             System.out.print(tilfeldigTall[i]+ " ");
+         }
+     }
 
-        // Metode som finner og returnerer det største tallet i arrayet.
+    public static int finnMinsteTall(int [] tilfeldigTall){
+        int minsteTall = tilfeldigTall[0];
+        for (int i = 0; i < tilfeldigTall.length; i++){
+            if (tilfeldigTall[i] < minsteTall){
+                minsteTall = tilfeldigTall[i];
+            }
+        }
+        return minsteTall;
+    }
 
-   /*  Metode som beregner og returnerer den gjennomstnittlige verdien
-     (double-verdi) av tallene i arrayet.  */
+    public static int finnStørsteTall(int [] tilfeldigTall){
+        int størsteTall = tilfeldigTall[0];
+        for (int i = 0; i < tilfeldigTall.length; i++){
+            if (tilfeldigTall[i] < størsteTall){
+                størsteTall = tilfeldigTall[i];
+            }
+        }
+        return størsteTall;
+    }
+
+    public void Gjennomsnitt (){
+        int sum = 0;
+        for (int i = 0; i < tilfeldigTall.length; i++){
+            sum += tilfeldigTall[i];
+        }
+        double Gjennomsnitt = (double) sum/ tilfeldigTall.length;
+    }
+
+    public void visMelding(){
+        showMessageDialog(null, tilfeldigTall.length+ "\n"
+                            +"Mistetallet er "+ finnMinsteTall(tilfeldigTall)+ "\n"
+                            +"Størstetallet er "+finnStørsteTall(tilfeldigTall));
+    }
 
    /* Metode som viser tallene i arrayet i en meldngsboks.
      I tillegg skal det, i meldingsboks, skrives ut
@@ -35,7 +76,8 @@ public class UnikeTall {
 
 
    public static void main(String []args){
-
+        UnikeTall nyListe = new UnikeTall();
+        nyListe.visMelding();
    }
 }
 
