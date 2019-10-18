@@ -6,8 +6,8 @@ public class UnikeTall {
 
     int [] tilfeldigTall;
 
-    public void UnikeTall(int[] tilfeldigTall) {
-        this.tilfeldigTall = new int[tilfeldigTall.length];
+    public UnikeTall(int tilfeldigTall) {
+        this.tilfeldigTall = new int[tilfeldigTall];
     }
 
      private boolean test(int finnTall){
@@ -60,7 +60,7 @@ public class UnikeTall {
     }
 
     public void visMelding(){
-        showMessageDialog(null, "Det minste tallet er: "+ "\n"+
+        showMessageDialog(null, "Det minste tallet er: "+ finnMinsteTall(tilfeldigTall) +"\n"+
                             "Det største taller er: " + "\n"+
                             "Gjennomsnittet er: ");
     }
@@ -77,7 +77,7 @@ public class UnikeTall {
 
 
    public static void main(String []args){
-        UnikeTall nyListe = new UnikeTall();
+        UnikeTall nyListe = new UnikeTall(0);
         nyListe.visMelding();
    }
 }
